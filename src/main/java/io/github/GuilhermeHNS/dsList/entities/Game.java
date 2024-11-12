@@ -14,7 +14,7 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Integer id;
+    private Long id;
     private String title;
     @Column(name = "game_year")
     private Integer year;
