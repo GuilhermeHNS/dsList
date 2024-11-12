@@ -3,6 +3,7 @@ package io.github.GuilhermeHNS.dsList.services;
 import io.github.GuilhermeHNS.dsList.dto.GameDTO;
 import io.github.GuilhermeHNS.dsList.dto.GameMinDTO;
 import io.github.GuilhermeHNS.dsList.entities.Game;
+import io.github.GuilhermeHNS.dsList.projections.GameMinProjection;
 import io.github.GuilhermeHNS.dsList.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,17 @@ public class GameService {
             return new GameDTO(game.get());
         }
         return null;
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long idList) {
+        List<GameMinProjection> response = gameRepository.searchByList(idList);
+        return response.stream()
+                .map(x -> new GameMinDTO(
+                        x.getId(),
+                        x.getTitle(),
+                        x.getYear(),
+                        x.getImgUrl(),
+                        x.getShortDescription())).toList();
     }
 }
