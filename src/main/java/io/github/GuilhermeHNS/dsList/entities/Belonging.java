@@ -6,16 +6,16 @@ import jakarta.persistence.Table;
 import lombok.*;
 
 @Entity
-@Table(name = "tb_beloging")
+@Table(name = "tb_belonging")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Beloging {
+public class Belonging {
     @EmbeddedId
     @EqualsAndHashCode.Include
-    private BelogingPK id = new BelogingPK();
+    private BelongingPK id = new BelongingPK();
 
     private Integer position;
 }

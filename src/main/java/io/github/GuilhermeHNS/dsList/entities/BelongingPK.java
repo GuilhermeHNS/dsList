@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class BelogingPK {
+public class BelongingPK {
 
     @ManyToOne
     @JoinColumn(name = "game_id")
