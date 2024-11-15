@@ -44,7 +44,7 @@ public class GameService {
                 .map(x -> new GameMinDTO(
                         x.getId(),
                         x.getTitle(),
-                        x.getYear(),
+                        x.getGameYear(),
                         x.getImgUrl(),
                         x.getShortDescription())).toList();
     }
