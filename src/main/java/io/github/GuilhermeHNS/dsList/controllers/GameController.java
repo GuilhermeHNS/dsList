@@ -27,10 +27,6 @@ public class GameController {
 
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable Long id) {
-        GameDTO response = gameService.findById(id);
-        if (response != null) {
-            return ResponseEntity.ok(response);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(gameService.findById(id));
     }
 }

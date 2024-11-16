@@ -1,5 +1,6 @@
 package io.github.GuilhermeHNS.dsList.services;
 
+import io.github.GuilhermeHNS.dsList.Exceptions.GameNotFoundException;
 import io.github.GuilhermeHNS.dsList.dto.GameDTO;
 import io.github.GuilhermeHNS.dsList.dto.GameMinDTO;
 import io.github.GuilhermeHNS.dsList.entities.Game;
@@ -31,10 +32,10 @@ public class GameService {
     @Transactional(readOnly = true)
     public GameDTO findById(Long id) {
         Optional<Game> game = gameRepository.findById(id);
-        if(game.isPresent()) {
-            return new GameDTO(game.get());
+        if (game.isEmpty()) {
+            throw new GameNotFoundException();
         }
-        return null;
+        return new GameDTO(game.get());
     }
 
     @Transactional(readOnly = true)
