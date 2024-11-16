@@ -1,8 +1,6 @@
 package io.github.GuilhermeHNS.dsList.controllers;
 
-import io.github.GuilhermeHNS.dsList.dto.GameDTO;
 import io.github.GuilhermeHNS.dsList.dto.GameMinDTO;
-import io.github.GuilhermeHNS.dsList.entities.Game;
 import io.github.GuilhermeHNS.dsList.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

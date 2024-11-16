@@ -5,6 +5,7 @@ import io.github.GuilhermeHNS.dsList.dto.GameMinDTO;
 import io.github.GuilhermeHNS.dsList.dto.ReplacementDTO;
 import io.github.GuilhermeHNS.dsList.services.GameListService;
 import io.github.GuilhermeHNS.dsList.services.GameService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,7 @@ public class GameListController {
     }
 
     @PostMapping(value = "/{listId}/replacement")
-    public ResponseEntity move(@PathVariable Long listId, @RequestBody ReplacementDTO dto) {
+    public ResponseEntity move(@PathVariable Long listId, @Valid @RequestBody ReplacementDTO dto) {
         gameListService.move(listId, dto.sourceIndex(), dto.destinationIndex());
         return ResponseEntity.ok().build();
     }

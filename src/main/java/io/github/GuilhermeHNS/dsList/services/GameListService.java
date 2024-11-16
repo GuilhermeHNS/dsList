@@ -1,5 +1,6 @@
 package io.github.GuilhermeHNS.dsList.services;
 
+import io.github.GuilhermeHNS.dsList.Exceptions.InvalidIndexException;
 import io.github.GuilhermeHNS.dsList.dto.GameListDTO;
 import io.github.GuilhermeHNS.dsList.projections.GameMinProjection;
 import io.github.GuilhermeHNS.dsList.repositories.GameListRepository;
@@ -28,6 +29,9 @@ public class GameListService {
     @Transactional
     public void move(Long listId, int sourceIndex, int destinationIndex) {
         List<GameMinProjection> list = gameRepository.searchByList(listId);
+        if(destinationIndex > list.size() -1) {
+            throw new InvalidIndexException();
+        }
         GameMinProjection obj = list.remove(sourceIndex);
         list.add(destinationIndex, obj);
         int min = sourceIndex < destinationIndex ? sourceIndex : destinationIndex;
