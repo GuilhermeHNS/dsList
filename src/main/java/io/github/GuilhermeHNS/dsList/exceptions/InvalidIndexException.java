@@ -1,4 +1,4 @@
-package io.github.GuilhermeHNS.dsList.Exceptions;
+package io.github.GuilhermeHNS.dsList.exceptions;
 
 public class InvalidIndexException extends RuntimeException {
     public InvalidIndexException() {

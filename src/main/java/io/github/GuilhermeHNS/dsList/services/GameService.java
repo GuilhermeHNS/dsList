@@ -1,9 +1,10 @@
 package io.github.GuilhermeHNS.dsList.services;
 
-import io.github.GuilhermeHNS.dsList.Exceptions.GameNotFoundException;
+import io.github.GuilhermeHNS.dsList.exceptions.GameNotFoundException;
 import io.github.GuilhermeHNS.dsList.dto.GameDTO;
 import io.github.GuilhermeHNS.dsList.dto.GameMinDTO;
 import io.github.GuilhermeHNS.dsList.entities.Game;
+import io.github.GuilhermeHNS.dsList.exceptions.ListGameNotFoundException;
 import io.github.GuilhermeHNS.dsList.projections.GameMinProjection;
 import io.github.GuilhermeHNS.dsList.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,9 @@ public class GameService {
     @Transactional(readOnly = true)
     public List<GameMinDTO> findByList(Long idList) {
         List<GameMinProjection> response = gameRepository.searchByList(idList);
+        if (response.size() == 0) {
+            throw new ListGameNotFoundException();
+        }
         return response.stream()
                 .map(x -> new GameMinDTO(
                         x.getId(),

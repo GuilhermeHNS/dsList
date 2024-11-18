@@ -1,6 +1,6 @@
 package io.github.GuilhermeHNS.dsList.services;
 
-import io.github.GuilhermeHNS.dsList.Exceptions.InvalidIndexException;
+import io.github.GuilhermeHNS.dsList.exceptions.InvalidIndexException;
 import io.github.GuilhermeHNS.dsList.dto.GameListDTO;
 import io.github.GuilhermeHNS.dsList.projections.GameMinProjection;
 import io.github.GuilhermeHNS.dsList.repositories.GameListRepository;
