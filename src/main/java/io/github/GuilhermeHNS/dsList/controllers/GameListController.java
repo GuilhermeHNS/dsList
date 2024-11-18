@@ -9,6 +9,7 @@ import io.github.GuilhermeHNS.dsList.services.GameService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -37,7 +38,7 @@ public class GameListController {
             responses = {
                     @ApiResponse(responseCode = "200", description = "Listas de Games encontradas com sucesso!", content = @Content(
                             mediaType = "application/json",
-                            schema = @Schema(implementation = GameListDTO.class)
+                            array = @ArraySchema(schema = @Schema(implementation = GameListDTO.class))
                     )),
                     @ApiResponse(responseCode = "500", description = "Erro interno no servidor!", content = @Content(
                             mediaType = "application/json",
@@ -56,7 +57,7 @@ public class GameListController {
             responses = {
                     @ApiResponse(responseCode = "200", description = "Lista encontrada com sucesso!", content = @Content(
                             mediaType = "application/json",
-                            schema = @Schema(implementation = GameMinDTO.class)
+                            array = @ArraySchema(schema = @Schema(implementation = GameMinDTO.class))
                     )),
                     @ApiResponse(responseCode = "404", description = "Não encontrado!", content = @Content(
                             mediaType = "application/json",
