@@ -5,13 +5,16 @@ import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.servers.Server;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 public class OpenApiConfig {
-
+    @Value("${swagger.server.url}")
+    private String serverUrl;
     @Bean
     public OpenAPI customOpenApi() {
         return new OpenAPI()
@@ -23,6 +26,7 @@ public class OpenApiConfig {
                                 .name("Guilherme Henrique")
                                 .email("guilhermehenriquenovaes@gmail.com"))
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")))
+                .addServersItem(new Server().url(serverUrl))
                 .addTagsItem(new io.swagger.v3.oas.models.tags.Tag().name("Games").description("Operações relacionadas a Games"))
                 .addTagsItem(new io.swagger.v3.oas.models.tags.Tag().name("ListGames").description("Operações relacionadas a Lista de Games"))
                 .addSecurityItem(new SecurityRequirement());
